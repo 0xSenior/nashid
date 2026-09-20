@@ -1,0 +1,37 @@
+{
+  "id": "al-h-iyyah-imam-ibn-abu-dawud",
+  "title": "al-Hā'iyyah | Imam Ibn Abu Dawud رحمه الله",
+  "artist": "القصري",
+  "difficulty": "beginner",
+  "tags": [],
+  "audioFileName": "al-Hā'iyyah  Imam Ibn Abu Dawud رحمه الله.mp3",
+  "durationMs": 361770,
+  "lineCount": 1,
+  "languages": [
+    "ar",
+    "en",
+    "fr",
+    "ru",
+    "de",
+    "id",
+    "nl",
+    "ckb",
+    "fa"
+  ],
+  "lines": [
+    {
+      "lineIndex": 0,
+      "startMs": 0,
+      "endMs": 0,
+      "ar": "لا",
+      "en": "No",
+      "fr": "Non",
+      "ru": "Нет",
+      "de": "Nein",
+      "id": "Tidak",
+      "nl": "Nee",
+      "ckb": "نە",
+      "fa": "نه"
+    }
+  ]
+}

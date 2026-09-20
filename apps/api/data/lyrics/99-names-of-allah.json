@@ -1,0 +1,37 @@
+{
+  "id": "99-names-of-allah",
+  "title": "99 Names Of Allah",
+  "artist": "القصري",
+  "difficulty": "beginner",
+  "tags": [],
+  "audioFileName": "99 Names Of Allah.mp3",
+  "durationMs": 215562,
+  "lineCount": 1,
+  "languages": [
+    "ar",
+    "en",
+    "fr",
+    "ru",
+    "de",
+    "id",
+    "nl",
+    "ckb",
+    "fa"
+  ],
+  "lines": [
+    {
+      "lineIndex": 0,
+      "startMs": 0,
+      "endMs": 0,
+      "ar": "لا",
+      "en": "No",
+      "fr": "Non",
+      "ru": "Нет",
+      "de": "Nein",
+      "id": "Tidak",
+      "nl": "Nee",
+      "ckb": "نەخێر",
+      "fa": "نه"
+    }
+  ]
+}

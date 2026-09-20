@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+apps/*/node_modules/
+packages/*/node_modules/
+audit/node_modules/
+
+# Production build outputs
+dist/
+apps/*/dist/
+build/
+
+# Local cache & temp
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Operating System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Large Media & Screenshots (Uploaded separately)
+apps/api/data/audio/
+apps/api/data/covers/
+audit/shots/
+

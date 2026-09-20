@@ -1,0 +1,8 @@
+{
+  "name": "@nashid/ui",
+  "version": "1.0.0",
+  "main": "tokens.json",
+  "files": [
+    "tokens.json"
+  ]
+}
