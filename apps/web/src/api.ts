@@ -1,6 +1,11 @@
 import { NasheedSummary, LyricsData, DictionaryWord, SavedWord, Playlist } from '@nashid/types';
 
-const API_BASE = '/api';
+export const API_HOST = import.meta.env.VITE_API_URL 
+  ? import.meta.env.VITE_API_URL.replace(/\/$/, '')
+  : (import.meta.env.DEV ? '' : 'https://nashid-api-jjiq.vercel.app');
+
+const API_BASE = `${API_HOST}/api`;
+const MEDIA_BASE = API_HOST;
 
 export async function fetchNasheeds(difficulty?: string, search?: string): Promise<NasheedSummary[]> {
   try {
@@ -11,7 +16,11 @@ export async function fetchNasheeds(difficulty?: string, search?: string): Promi
     const res = await fetch(`${API_BASE}/nasheeds?${params.toString()}`);
     if (!res.ok) throw new Error('Failed to fetch');
     const data = await res.json();
-    return data.nasheeds;
+    return data.nasheeds.map((n: NasheedSummary) => ({
+      ...n,
+      coverUrl: n.coverUrl && !n.coverUrl.startsWith('http') ? `${MEDIA_BASE}${n.coverUrl}` : n.coverUrl,
+      audioUrl: n.audioUrl && !n.audioUrl.startsWith('http') ? `${MEDIA_BASE}${n.audioUrl}` : n.audioUrl
+    }));
   } catch (err) {
     console.warn('API fetch failed, using fallback client data', err);
     return [];
