@@ -38,8 +38,6 @@ desktop.ini
 *.swp
 *.swo
 
-# Large Media & Screenshots (Uploaded separately)
-apps/api/data/audio/
-apps/api/data/covers/
+# Screenshots
 audit/shots/
 

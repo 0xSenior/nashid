@@ -13,7 +13,9 @@ app.use(cors());
 app.use(express.json());
 
 // Serve local media assets (audio, covers, lyrics)
-const DATA_DIR = path.resolve('apps/api/data');
+const DATA_DIR = fs.existsSync(path.resolve('apps/api/data'))
+  ? path.resolve('apps/api/data')
+  : (fs.existsSync(path.resolve('data')) ? path.resolve('data') : path.resolve(process.cwd(), 'data'));
 app.use('/media', express.static(DATA_DIR));
 
 // Load local master catalog if available, otherwise fallback
