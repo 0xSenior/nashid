@@ -67,7 +67,7 @@ export const App: React.FC = () => {
   // Fetch lyrics when track changes
   useEffect(() => {
     if (currentTrack) {
-      fetchNasheedLyrics(currentTrack.id).then((l) => {
+      fetchNasheedLyrics(currentTrack).then((l) => {
         if (l) setCurrentLyrics(l);
       });
     }

@@ -77,24 +77,66 @@ export async function fetchNasheeds(difficulty?: string, search?: string): Promi
   return [];
 }
 
-export async function fetchNasheedLyrics(id: string): Promise<LyricsData | null> {
-  if (API_BASE) {
+export async function fetchNasheedLyrics(trackOrId: string | NasheedSummary): Promise<LyricsData | null> {
+  let targetUrl = '';
+  let id = '';
+  let slug = '';
+
+  if (typeof trackOrId === 'object' && trackOrId !== null) {
+    id = trackOrId.id;
+    slug = trackOrId.slug || '';
+    targetUrl = trackOrId.lyricsJsonUrl || '';
+  } else {
+    id = trackOrId;
+    if (cachedNasheeds) {
+      const found = cachedNasheeds.find(n => n.id === id || n.slug === id);
+      if (found) {
+        slug = found.slug || '';
+        targetUrl = found.lyricsJsonUrl || '';
+      }
+    }
+  }
+
+  // 1. Direct lyricsJsonUrl from catalog
+  if (targetUrl) {
     try {
-      const res = await fetch(`${API_BASE}/nasheeds/${id}/lyrics`);
+      const url = targetUrl.startsWith('http') ? targetUrl : `${MEDIA_BASE}${targetUrl}`;
+      const res = await fetch(url);
       if (res.ok) return await res.json();
-    } catch (err) {
+    } catch (e) {
       // fallback
     }
   }
 
-  // Fallback to static lyrics file: /media/lyrics/{id}.json
-  try {
-    const res = await fetch(`/media/lyrics/${id}.json`);
-    if (res.ok) {
-      return await res.json();
+  // 2. Fallback to slug-based static lyrics: /media/lyrics/{slug}.json
+  if (slug) {
+    try {
+      const res = await fetch(`/media/lyrics/${slug}.json`);
+      if (res.ok) return await res.json();
+    } catch (e) {
+      // fallback
     }
-  } catch (e) {
-    console.warn(`Could not load /media/lyrics/${id}.json`, e);
+  }
+
+  // 3. Fallback to id-based static lyrics: /media/lyrics/{id}.json
+  if (id) {
+    try {
+      const res = await fetch(`/media/lyrics/${id}.json`);
+      if (res.ok) return await res.json();
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  // 4. API endpoint fallback if API_BASE is configured
+  if (API_BASE) {
+    try {
+      const key = slug || id;
+      const res = await fetch(`${API_BASE}/nasheeds/${key}/lyrics`);
+      if (res.ok) return await res.json();
+    } catch (err) {
+      // fallback
+    }
   }
 
   return null;
