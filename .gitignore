@@ -41,3 +41,16 @@ desktop.ini
 # Screenshots
 audit/shots/
 
+# Audio - Track 10 trial nasheeds, ignore the rest for lightweight repo
+apps/api/data/audio/*
+!apps/api/data/audio/shar3iatul-fakhri.mp3
+!apps/api/data/audio/ayn-al-quroonul-madiyah.mp3
+!apps/api/data/audio/wa-madhayta-hussein.mp3
+!apps/api/data/audio/tauhiduna.mp3
+!apps/api/data/audio/darbuna.mp3
+!apps/api/data/audio/ask-the-lofty-spears.mp3
+!apps/api/data/audio/qatalatny-til-kal-qalawat.mp3
+!apps/api/data/audio/awwahun.mp3
+!apps/api/data/audio/o-salafi-take-my-advice.mp3
+!apps/api/data/audio/qad-fuztaya-ghundar.mp3
+
