@@ -54,3 +54,6 @@ apps/api/data/audio/*
 !apps/api/data/audio/o-salafi-take-my-advice.mp3
 !apps/api/data/audio/qad-fuztaya-ghundar.mp3
 
+# Generated web static media (synced at build time)
+apps/web/public/media/
+
