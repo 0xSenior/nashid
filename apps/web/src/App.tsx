@@ -4,6 +4,7 @@ import { Sidebar } from './components/Sidebar.js';
 import { BottomPlayer } from './components/BottomPlayer.js';
 import { SyncedLyricsModal } from './components/SyncedLyricsModal.js';
 import { WordModal } from './components/WordModal.js';
+import { DownloadModal } from './components/DownloadModal.js';
 import { HomeView } from './views/HomeView.js';
 import { LibraryView } from './views/LibraryView.js';
 import { CardsView } from './views/CardsView.js';
@@ -29,6 +30,7 @@ export const App: React.FC = () => {
   // Lyrics & Modals
   const [isLyricsOpen, setIsLyricsOpen] = useState<boolean>(false);
   const [currentLyrics, setCurrentLyrics] = useState<LyricsData | null>(null);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false);
 
   // Word Popup
   const [selectedWord, setSelectedWord] = useState<DictionaryWord | null>(null);
@@ -225,6 +227,7 @@ export const App: React.FC = () => {
         theme={theme}
         onSelectTab={setCurrentTab}
         onToggleTheme={toggleTheme}
+        onOpenDownloadModal={() => setIsDownloadModalOpen(true)}
       />
 
       {/* Content Area */}
@@ -240,6 +243,7 @@ export const App: React.FC = () => {
                 setIsLyricsOpen(true);
               }}
               onNavigateTab={setCurrentTab}
+              onOpenDownloadModal={() => setIsDownloadModalOpen(true)}
             />
           )}
 
@@ -333,6 +337,12 @@ export const App: React.FC = () => {
           onSaveWord={handleSaveWord}
         />
       )}
+
+      {/* Mobile App Download Modal */}
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
     </div>
   );
 };

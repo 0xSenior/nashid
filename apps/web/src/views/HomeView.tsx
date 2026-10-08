@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, Mic, MessageCircle, ArrowRight, Library, BookOpen, Clock, Sparkles, ChevronRight, Music2, User } from 'lucide-react';
+import { Play, Mic, MessageCircle, ArrowRight, Library, BookOpen, Clock, Sparkles, ChevronRight, Music2, User, Smartphone, Download } from 'lucide-react';
 import { NasheedSummary } from '@nashid/types';
 
 interface HomeViewProps {
@@ -8,6 +8,7 @@ interface HomeViewProps {
   onPlayNasheed: (n: NasheedSummary) => void;
   onOpenDetails: (n: NasheedSummary) => void;
   onNavigateTab: (tab: string) => void;
+  onOpenDownloadModal?: () => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
@@ -16,8 +17,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onPlayNasheed,
   onOpenDetails,
   onNavigateTab,
+  onOpenDownloadModal,
 }) => {
-  const [activeBanner, setActiveBanner] = useState<number>(1); // 1 = Discord banner as in screenshot
+  const [activeBanner, setActiveBanner] = useState<number>(2); // Default to Mobile App banner for great visibility
 
   const heroTrack =
     nasheeds.find(n => n.id === 'dhahiktu-faqalu' || n.title.toLowerCase().includes('dhahiktu')) ||
@@ -53,7 +55,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <ArrowRight size={15} />
           </div>
         </div>
-      ) : (
+      ) : activeBanner === 1 ? (
         <div
           className="promo-banner indigo"
           onClick={() => alert('Discord Community')}
@@ -73,6 +75,34 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <ArrowRight size={15} />
           </div>
         </div>
+      ) : (
+        <div
+          className="promo-banner mobile"
+          onClick={() => onOpenDownloadModal ? onOpenDownloadModal() : null}
+        >
+          <div className="banner-left">
+            <div className="banner-icon-box" style={{ background: 'rgba(255, 187, 0, 0.2)' }}>
+              <Smartphone size={18} color="var(--accent-primary)" />
+            </div>
+            <div>
+              <div style={{ fontSize: '14px', fontWeight: 800, color: 'var(--accent-primary)' }}>
+                تطبيق نشيد للهاتف متاح للتحميل الآن ✨
+              </div>
+              <div style={{ fontSize: '11px', opacity: 0.9 }}>
+                129 أنشودة مع الكلمات المتزامنة وتصميم زجاجي فاخر · ملف APK مباشر (53.5 MB)
+              </div>
+            </div>
+          </div>
+          <a
+            href="/nashid.apk"
+            download="nashid.apk"
+            className="banner-download-action"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Download size={14} />
+            <span>تحميل</span>
+          </a>
+        </div>
       )}
 
       {/* Dots */}
@@ -84,6 +114,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div
           className={`dot ${activeBanner === 1 ? 'active' : ''}`}
           onClick={() => setActiveBanner(1)}
+        />
+        <div
+          className={`dot ${activeBanner === 2 ? 'active' : ''}`}
+          onClick={() => setActiveBanner(2)}
         />
       </div>
 
@@ -149,7 +183,45 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <ChevronRight size={16} color="var(--text-muted)" />
       </div>
 
-      {/* 5. Recently Played Section */}
+      {/* 5. Mobile App Showcase Card */}
+      <div className="mobile-app-showcase-card" onClick={() => onOpenDownloadModal && onOpenDownloadModal()}>
+        <div className="showcase-left">
+          <div className="showcase-icon-box">
+            <Smartphone size={24} color="var(--accent-primary)" />
+          </div>
+          <div className="showcase-content">
+            <div className="showcase-badge">
+              <Sparkles size={11} color="var(--accent-primary)" />
+              <span>تطبيق الأندرويد الرسمي · Android APK</span>
+            </div>
+            <div className="showcase-title">
+              حمّل تطبيق نشيد على هاتفك الذكي
+            </div>
+            <div className="showcase-desc">
+              استمع لـ 129 نشيداً وتعلّم الفصحى أينما كنت مع ميزة تتبع الكلمات بالمللي ثانية، قواميس المفردات، وتصميم Glassmorphism الزجاجي الجديد.
+            </div>
+            <div className="showcase-features-pills">
+              <span className="pill">✨ بدون إعلانات</span>
+              <span className="pill">🎵 129 نشيداً كاملاً</span>
+              <span className="pill">🌙 تصميم زجاجي فاخر</span>
+              <span className="pill">📦 53.5 MB</span>
+            </div>
+          </div>
+        </div>
+        <div className="showcase-actions">
+          <a
+            href="/nashid.apk"
+            download="nashid.apk"
+            className="btn-showcase-download"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Download size={16} />
+            <span>تحميل مباشر (APK)</span>
+          </a>
+        </div>
+      </div>
+
+      {/* 6. Recently Played Section */}
       <div className="section-header">
         <Clock size={15} color="var(--accent-primary)" />
         <span>Recently played</span>
@@ -172,7 +244,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         ))}
       </div>
 
-      {/* 6. Recommended for you Section */}
+      {/* 7. Recommended for you Section */}
       <div className="section-header">
         <Sparkles size={15} color="var(--accent-primary)" />
         <span>Recommended for you</span>

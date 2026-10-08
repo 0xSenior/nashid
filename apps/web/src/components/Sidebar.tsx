@@ -1,6 +1,5 @@
 import React from 'react';
-import { Home, Library, ListMusic, Layers, Mic, ExternalLink, Sun, Moon, User } from 'lucide-react';
-
+import { Home, Library, ListMusic, Layers, Mic, ExternalLink, Sun, Moon, User, Smartphone, Download } from 'lucide-react';
 import { NashidLogo } from './NashidLogo.js';
 
 interface SidebarProps {
@@ -8,6 +7,7 @@ interface SidebarProps {
   theme: 'dark' | 'light';
   onSelectTab: (tab: string) => void;
   onToggleTheme: () => void;
+  onOpenDownloadModal?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -15,6 +15,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   theme,
   onSelectTab,
   onToggleTheme,
+  onOpenDownloadModal,
 }) => {
   const menu = [
     { id: 'home', label: 'Home', icon: Home },
@@ -70,22 +71,45 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
       </div>
 
-      {/* Footer / Theme & Account */}
-      <div className="sidebar-footer">
-        <div className="menu-item" onClick={onToggleTheme}>
-          <div className="menu-item-left">
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            <span>{theme === 'dark' ? 'Light theme' : 'Dark theme'}</span>
+      {/* Footer / App Promo, Theme & Account */}
+      <div className="sidebar-bottom-section">
+        {/* Mobile App Promo Card */}
+        <div className="sidebar-app-promo" onClick={onOpenDownloadModal}>
+          <div className="sidebar-app-promo-header">
+            <div className="sidebar-app-icon-wrap">
+              <Smartphone size={16} color="var(--accent-primary)" />
+            </div>
+            <span className="sidebar-app-tag">APK · Android</span>
           </div>
+          <div className="sidebar-app-title">تطبيق نشيد للهاتف</div>
+          <div className="sidebar-app-sub">129 أنشودة وتصميم زجاجي فاخر</div>
+          <a
+            href="/nashid.apk"
+            download="nashid.apk"
+            className="sidebar-app-btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Download size={13} />
+            <span>تحميل مباشر</span>
+          </a>
         </div>
 
-        <div
-          className={`menu-item ${currentTab === 'account' ? 'active' : ''}`}
-          onClick={() => onSelectTab('account')}
-        >
-          <div className="menu-item-left">
-            <User size={18} />
-            <span>Account</span>
+        <div className="sidebar-footer">
+          <div className="menu-item" onClick={onToggleTheme}>
+            <div className="menu-item-left">
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              <span>{theme === 'dark' ? 'Light theme' : 'Dark theme'}</span>
+            </div>
+          </div>
+
+          <div
+            className={`menu-item ${currentTab === 'account' ? 'active' : ''}`}
+            onClick={() => onSelectTab('account')}
+          >
+            <div className="menu-item-left">
+              <User size={18} />
+              <span>Account</span>
+            </div>
           </div>
         </div>
       </div>
