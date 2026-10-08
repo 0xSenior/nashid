@@ -40,7 +40,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
             </div>
             <h2 className="download-modal-title">تطبيق نشيد للهاتف المحمول</h2>
             <p className="download-modal-subtitle">
-              استمع إلى 129 نشيداً مع الكلمات المتزامنة بالمللي ثانية، قواميس المفردات، وتصميم Glassmorphism الزجاجي الفاخر
+              استمع إلى أناشيدك في الهاتف بشكل أسرع مع مزامنة الكلمات الحية ومؤقت النوم الذكي
             </p>
           </div>
         </div>

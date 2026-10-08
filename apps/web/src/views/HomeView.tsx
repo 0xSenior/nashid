@@ -89,7 +89,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 تطبيق نشيد للهاتف متاح للتحميل الآن ✨
               </div>
               <div style={{ fontSize: '11px', opacity: 0.9 }}>
-                129 أنشودة مع الكلمات المتزامنة وتصميم زجاجي فاخر · ملف APK مباشر (53.5 MB)
+                استمع إلى أناشيدك في الهاتف بشكل أسرع
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               حمّل تطبيق نشيد على هاتفك الذكي
             </div>
             <div className="showcase-desc">
-              استمع لـ 129 نشيداً وتعلّم الفصحى أينما كنت مع ميزة تتبع الكلمات بالمللي ثانية، قواميس المفردات، وتصميم Glassmorphism الزجاجي الجديد.
+              استمع إلى أناشيدك في الهاتف بشكل أسرع مع ميزة متابعة الكلمات، مؤقت النوم، وحفظ المفردات.
             </div>
             <div className="showcase-features-pills">
               <span className="pill">✨ بدون إعلانات</span>

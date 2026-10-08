@@ -82,7 +82,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span className="sidebar-app-tag">APK · Android</span>
           </div>
           <div className="sidebar-app-title">تطبيق نشيد للهاتف</div>
-          <div className="sidebar-app-sub">129 أنشودة وتصميم زجاجي فاخر</div>
+          <div className="sidebar-app-sub">استمع إلى أناشيدك في الهاتف بشكل أسرع</div>
           <a
             href="/nashid.apk"
             download="nashid.apk"
