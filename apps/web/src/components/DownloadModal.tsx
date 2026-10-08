@@ -121,8 +121,8 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
               <Sparkles size={16} color="var(--accent-primary)" />
             </div>
             <div>
-              <div className="feature-title">تصميم زجاجي فاخر (Glassmorphism)</div>
-              <div className="feature-desc">واجهة ليلية مريحة للعين مع إضاءات شبكية ناعمة</div>
+              <div className="feature-title">واجهة ليلية مريحة وسريعة</div>
+              <div className="feature-desc">تجربة استماع انسيابية وهادئة ومريحة للعين</div>
             </div>
           </div>
 

@@ -203,7 +203,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div className="showcase-features-pills">
               <span className="pill">✨ بدون إعلانات</span>
               <span className="pill">🎵 129 نشيداً كاملاً</span>
-              <span className="pill">🌙 تصميم زجاجي فاخر</span>
+              <span className="pill">🌙 واجهة ليلية مريحة</span>
               <span className="pill">📦 53.5 MB</span>
             </div>
           </div>
